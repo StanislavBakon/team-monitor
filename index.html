@@ -1,10 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Team Monitor</title>
-  </head>
-  <body>
-    <h1>Team Monitor 🚀</h1>
-    <p>My first version is live!</p>
-  </body>
+<head>
+  <title>Team Monitor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 200px;
+      background: #111;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover {
+      background: #444;
+    }
+
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <h2>Team Monitor</h2>
+    <button onclick="showPage('overview')">Overview</button>
+    <button onclick="showPage('master')">Master Data</button>
+    <button onclick="showPage('tasks')">Task Tracker</button>
+    <button onclick="showPage('notes')">Notes Tracker</button>
+    <button onclick="showPage('settings')">Settings</button>
+  </div>
+
+  <div class="main" id="content">
+    <h1>Overview</h1>
+    <p>Welcome to Team Monitor</p>
+  </div>
+
+  <script>
+    function showPage(page) {
+      const content = document.getElementById("content");
+
+      if (page === "overview") {
+        content.innerHTML = "<h1>Overview</h1><p>Dashboard coming soon</p>";
+      }
+
+      if (page === "master") {
+        content.innerHTML = "<h1>Master Data</h1><p>Employee list coming soon</p>";
+      }
+
+      if (page === "tasks") {
+        content.innerHTML = "<h1>Task Tracker</h1><p>Tasks coming soon</p>";
+      }
+
+      if (page === "notes") {
+        content.innerHTML = "<h1>Notes Tracker</h1><p>Notes coming soon</p>";
+      }
+
+      if (page === "settings") {
+        content.innerHTML = "<h1>Settings</h1><p>Settings coming soon</p>";
+      }
+    }
+  </script>
+
+</body>
 </html>
