@@ -27,8 +27,25 @@ body {
 .button {
   padding: 12px;
   width: 200px;
-  border-radius: 10px;
-  background: lightgray;
+  border-radius: 12px;
+  background: #e0e0e0;
   border: none;
   cursor: pointer;
+  font-weight: 500;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+/* Hover = when mouse is over */
+.button:hover {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+/* Click effect */
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
