@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container glass" id="card">
+</div>
+
+<a class="button" href="master.html">⬅ Back</a>
+
+<script>
+const emp = JSON.parse(localStorage.getItem("selectedEmployee"));
+
+const card = document.getElementById("card");
+
+card.innerHTML = `
+  <h2>${emp.name} ${emp.surname}</h2>
+  <p>KID: ${emp.kid}</p>
+  <p>MHE: ${emp.mhe}</p>
+  <p>Supervisor: ${emp.supervisor}</p>
+  <p>Department: ${emp.department}</p>
+  <p>Position: ${emp.position}</p>
+`;
+</script>
+
+</body>
+</html>
