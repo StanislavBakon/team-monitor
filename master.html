@@ -12,8 +12,71 @@
 
     <p>Here you will manage employees.</p>
 
+    <button onclick="toggleForm()">+ New Employee</button>
+
+    <div id="form" style="display:none; margin-top:20px;">
+      <input id="name" placeholder="Name"><br>
+      <input id="surname" placeholder="Surname"><br>
+      <input id="kid" placeholder="KID Number"><br>
+      <input id="mhe" placeholder="MHE Code"><br>
+      <input id="supervisor" placeholder="Supervisor"><br>
+      <input id="department" placeholder="Department"><br>
+      <input id="position" placeholder="Position"><br>
+
+      <button onclick="saveEmployee()">Save</button>
+    </div>
+
+    <ul id="list"></ul>
+
     <a class="button" href="index.html">⬅ Back to Home</a>
   </div>
+
+  <script>
+    let employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+    function toggleForm() {
+      const form = document.getElementById("form");
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    function saveEmployee() {
+      const employee = {
+        name: document.getElementById("name").value,
+        surname: document.getElementById("surname").value,
+        kid: document.getElementById("kid").value,
+        mhe: document.getElementById("mhe").value,
+        supervisor: document.getElementById("supervisor").value,
+        department: document.getElementById("department").value,
+        position: document.getElementById("position").value
+      };
+
+      employees.push(employee);
+      localStorage.setItem("employees", JSON.stringify(employees));
+
+      render();
+    }
+
+    function render() {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+
+      employees.forEach((emp) => {
+        const li = document.createElement("li");
+        li.textContent = emp.name + " " + emp.surname;
+
+        li.onclick = () => openCard(emp);
+
+        list.appendChild(li);
+      });
+    }
+
+    function openCard(emp) {
+      localStorage.setItem("selectedEmployee", JSON.stringify(emp));
+      window.location.href = "employee.html";
+    }
+
+    render();
+  </script>
 
 </body>
 </html>
