@@ -4,31 +4,54 @@
   <title>Team Monitor</title>
 
   <style>
+    :root {
+      --bg-dark: linear-gradient(135deg, #1e1e2f, #3a3a5f);
+      --bg-light: linear-gradient(135deg, #e0e0e0, #ffffff);
+
+      --glass-dark: rgba(255, 255, 255, 0.08);
+      --glass-light: rgba(255, 255, 255, 0.6);
+
+      --text-dark: white;
+      --text-light: black;
+    }
+
     body {
       margin: 0;
       font-family: Arial;
-      background: linear-gradient(135deg, #1e1e2f, #3a3a5f);
       height: 100vh;
       display: flex;
-      color: white;
+      transition: 0.3s;
     }
 
-    /* Glass effect */
+    body[data-theme="dark"] {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body[data-theme="light"] {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
     .glass {
-      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       border-radius: 15px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    body[data-theme="dark"] .glass {
+      background: var(--glass-dark);
+    }
+
+    body[data-theme="light"] .glass {
+      background: var(--glass-light);
     }
 
     .sidebar {
       width: 220px;
       margin: 15px;
-      padding: 20px;
-    }
-
-    .sidebar h2 {
-      margin-bottom: 20px;
     }
 
     .sidebar button {
@@ -38,7 +61,6 @@
       border: none;
       border-radius: 10px;
       background: rgba(255,255,255,0.1);
-      color: white;
       cursor: pointer;
       transition: 0.2s;
     }
@@ -50,17 +72,24 @@
     .main {
       flex: 1;
       margin: 15px;
-      padding: 20px;
     }
 
-    h1 {
-      margin-top: 0;
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
     }
 
+    .toggle {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 
-<body>
+<body data-theme="dark">
 
   <div class="sidebar glass">
     <h2>Team Monitor</h2>
@@ -72,9 +101,15 @@
     <button onclick="showPage('settings')">Settings</button>
   </div>
 
-  <div class="main glass" id="content">
-    <h1>Overview</h1>
-    <p>Welcome to your dashboard</p>
+  <div class="main">
+    <div class="topbar">
+      <button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+    </div>
+
+    <div class="glass" id="content">
+      <h1>Overview</h1>
+      <p>Welcome to your dashboard</p>
+    </div>
   </div>
 
   <script>
@@ -100,6 +135,22 @@
       if (page === "settings") {
         content.innerHTML = "<h1>Settings</h1><p>Settings coming soon</p>";
       }
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute("data-theme");
+
+      const newTheme = current === "dark" ? "light" : "dark";
+      body.setAttribute("data-theme", newTheme);
+
+      localStorage.setItem("theme", newTheme);
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.body.setAttribute("data-theme", savedTheme);
     }
   </script>
 
