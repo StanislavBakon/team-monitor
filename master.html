@@ -62,7 +62,12 @@
 
       employees.forEach((emp) => {
         const li = document.createElement("li");
-        li.textContent = emp.name + " " + emp.surname;
+        li.innerHTML = `
+  <div class="row">
+    <span class="name">${emp.name} ${emp.surname}</span>
+    <span class="dept">${emp.department}</span>
+  </div>
+`;
 
         li.onclick = () => openCard(emp);
 
