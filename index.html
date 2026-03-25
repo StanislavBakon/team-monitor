@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Team Monitor</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<div class="app">
 
-<body>
+  <div class="sidebar glass" id="sidebar">
+    <h2>Team Monitor</h2>
 
-  <div class="container glass">
-    <h1 class="title">Team Monitor</h1>
-
-    <a class="button" href="overview.html">Overview</a>
-    <a class="button" href="master.html">Master Data</a>
-    <a class="button" href="tasks.html">Task Tracker</a>
-    <a class="button" href="notes.html">Notes Tracker</a>
-    <a class="button" href="settings.html">Settings</a>
+    <button onclick="showPage('overview')">Overview</button>
+    <button onclick="showPage('master')">Master Data</button>
+    <button onclick="showPage('tasks')">Task Tracker</button>
+    <button onclick="showPage('notes')">Notes Tracker</button>
+    <button onclick="showPage('settings')">Settings</button>
   </div>
 
-</body>
-</html>
+  <div class="content glass" id="content">
+    <h1>Welcome</h1>
+    <p>Select a page</p>
+  </div>
+
+</div>
