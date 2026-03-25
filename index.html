@@ -16,3 +16,55 @@
   </div>
 
 </div>
+
+
+<script>
+  function showPage(page) {
+    const content = document.getElementById("content");
+
+    if (page === "overview") {
+      content.innerHTML = "<h1>Overview</h1><p>Dashboard coming soon</p>";
+    }
+
+    if (page === "master") {
+      content.innerHTML = `
+        <h1>Master Data</h1>
+        <input id="nameInput" placeholder="Employee name">
+        <button onclick="addEmployee()">Add</button>
+        <ul id="list"></ul>
+      `;
+      render();
+    }
+
+    content.classList.remove("active");
+    setTimeout(() => content.classList.add("active"), 10);
+  }
+
+  let employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+  function render() {
+    const list = document.getElementById("list");
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    employees.forEach(name => {
+      const li = document.createElement("li");
+      li.textContent = name;
+      list.appendChild(li);
+    });
+  }
+
+  function addEmployee() {
+    const input = document.getElementById("nameInput");
+    const name = input.value;
+
+    if (!name) return;
+
+    employees.push(name);
+    localStorage.setItem("employees", JSON.stringify(employees));
+
+    input.value = "";
+    render();
+  }
+</script>
