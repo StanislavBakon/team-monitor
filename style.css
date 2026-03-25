@@ -60,3 +60,31 @@ body {
 .button:active {
   transform: translateY(1px);
 }
+
+.app {
+  display: flex;
+  height: 100vh;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+
+  transition: 0.3s;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.3s;
+}
+
+.content.active {
+  opacity: 1;
+  transform: translateX(0);
+}
