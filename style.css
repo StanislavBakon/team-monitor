@@ -19,7 +19,7 @@ body {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 30px;
 
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
@@ -99,11 +99,13 @@ body {
 .content {
   flex: 1;
   padding: 30px;
+  display: flex;
 }
 
 /* PANEL */
 .panel {
   padding: 20px;
+  width: 100%;
 }
 
 /* ACTIONS */
