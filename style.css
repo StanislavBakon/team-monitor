@@ -2,13 +2,48 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #c7d2fe, #e0f2fe);
+  position: relative;
+}
+
+/* BACKGROUND GLASS SHAPES */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* TOP LEFT SHAPE */
+body::before {
+  width: 300px;
+  height: 300px;
+  top: -80px;
+  left: -80px;
+}
+
+/* BOTTOM RIGHT SHAPE */
+body::after {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  right: -100px;
 }
 
 /* APP LAYOUT */
 .app {
   display: flex;
   height: 100vh;
-  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  position: relative;
+  z-index: 1;
 }
 
 /* SIDEBAR */
@@ -19,15 +54,27 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* iOS glass */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 
-  border-right: 1px solid rgba(255,255,255,0.4);
+  /* subtle edge + depth */
+  border-right: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+
+  /* smoother feel */
+  border-radius: 0 20px 20px 0;
+
+  /* prevents weird shrinking */
+  flex-shrink: 0;
+
+  /* keeps it above background shapes */
+  position: relative;
+  z-index: 2;
 }
-
 /* LOGO */
 .logo {
   margin-bottom: 20px;
