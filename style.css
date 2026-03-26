@@ -1,1 +1,53 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background: #1e1e2f;
+  color: white;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-item.active {
+  background: rgba(255,255,255,0.2);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background: #f5f6fa;
+}
+
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
