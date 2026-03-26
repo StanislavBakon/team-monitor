@@ -54,3 +54,92 @@ body {
 .button:active {
   transform: translateY(1px);
 }
+
+/* APP LAYOUT */
+.app {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial;
+
+  background: linear-gradient(135deg, #ffb347, #ff7e5f, #feb47b);
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.nav-item.active {
+  background: rgba(255,255,255,0.5);
+  font-weight: bold;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* PANEL */
+.panel {
+  padding: 20px;
+}
+
+/* ACTIONS */
+.actions {
+  margin: 15px 0;
+}
+
+.btn {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background: rgba(255,255,255,0.3);
+}
+
+tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
